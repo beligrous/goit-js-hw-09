@@ -7,22 +7,25 @@ refs.startBtn.addEventListener('click', onStartClick);
 refs.stopBtn.addEventListener('click', onStopClick);
 
 const colorizer = {
+  intervalId: null,
   start() {
-    const intervalId = setInterval(() => {
+    this.intervalId = setInterval(() => {
       document.body.style.backgroundColor = getRandomHexColor();
+      refs.startBtn.disabled = true;
     }, 1000);
   },
   stop() {
     clearInterval(this.intervalId);
+    refs.startBtn.disabled = false;
   },
 };
 
 function onStartClick() {
-  colorizer.start;
+  colorizer.start();
 }
 
 function onStopClick() {
-  colorizer.stop;
+  colorizer.stop();
 }
 
 function getRandomHexColor() {
