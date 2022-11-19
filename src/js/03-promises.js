@@ -1,3 +1,6 @@
+import Notiflix from 'notiflix';
+Notiflix.Notify.init({});
+
 const form = document.querySelector('.form');
 
 form.addEventListener('submit', handleSubmit);
@@ -13,10 +16,10 @@ function handleSubmit(e) {
     let delay = Number(firstDelay.value) + Number(step.value) * i;
     createPromise(position, delay)
       .then(result => {
-        console.log(result);
+        result;
       })
       .catch(result => {
-        console.log(result);
+        result;
       });
   }
 }
@@ -26,9 +29,17 @@ function createPromise(position, delay) {
     const shouldResolve = Math.random() > 0.3;
     setTimeout(() => {
       if (shouldResolve) {
-        resolve(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        resolve(
+          Notiflix.Notify.success(
+            `✅ Fulfilled promise ${position} in ${delay}ms`
+          )
+        );
       } else {
-        reject(`❌ Rejected promise ${position} in ${delay}ms`);
+        reject(
+          Notiflix.Notify.failure(
+            `❌ Rejected promise ${position} in ${delay}ms`
+          )
+        );
       }
     }, delay);
   });
