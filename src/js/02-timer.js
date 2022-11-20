@@ -67,7 +67,7 @@ function onStartClick() {
     secondsElem.textContent = time.seconds;
   }, 1000);
 
-  if (secondsElem.textContent === '-1') {
+  if (ms < 0) {
     clearInterval(intId);
   }
 }
