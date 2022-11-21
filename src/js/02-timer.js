@@ -65,11 +65,11 @@ function onStartClick() {
     hoursElem.textContent = time.hours;
     minutesElem.textContent = time.minutes;
     secondsElem.textContent = time.seconds;
+    console.log(ms);
+    if (ms < 1000) {
+      clearInterval(intId);
+    }
   }, 1000);
-
-  if (ms < 0) {
-    clearInterval(intId);
-  }
 }
 
 function addLeadingZero(value) {
